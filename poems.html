@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Poems For You
+  </title>
+  <link rel="icon" href="img/cat1.png" type="image/x-icon">
+  <!-- Load Bootstrap first -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Then load Tailwind -->
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <!-- Other links -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg,  #98C4F2 0%, #ABD8E6 20%, #BEEBD9 40%, #D1FFCC 50%, #B5F5B3 100%);
+      padding: 4rem 1rem 1rem 1rem;
+      min-height: 100vh;
+    }
+    h1, h2 {
+      font-family: 'Poppins', sans-serif;
+    }
+    .intro-text {
+      max-width: 650px;
+      margin: 0 auto 2rem;
+      text-align: center;
+    }
+    .absolute.inset-0.bg-black {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    .group:hover .absolute.inset-0.bg-black {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+    .text-center.mb-5 {
+      line-height: 1.9;
+
+
+    /* Prevent text selection while dragging */
+.noselect {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Button cursor states */
+#movableHomeBtn {
+  cursor: grab;
+  transition: all 0.3s ease;
+}
+#movableHomeBtn:active {
+  cursor: grabbing;
+}
+    }
+  </style>
+ </head>
+ <body class="min-h-screen flex flex-col items-center justify-start p-4">
+  <button
+  id="movableHomeBtn"
+  aria-label="Home page button"
+  class="noselect fixed bottom-4 left-4 z-50 flex items-center justify-center w-14 h-14 rounded-full text-white shadow-lg hover:bg-blue-900 focus:outline-none focus:ring-4 focus:ring-blue-300 cursor-default"
+  type="button"
+  style="background-color: #101D42;"
+>
+  <i class="fas fa-home fa-lg"></i>
+</button>
+  <!-- Banner -->
+  <div class="w-full max-w-7xl mx-auto mb-8 rounded-lg overflow-hidden shadow-lg relative">
+   <img alt="banner" class="w-full h-48 sm:h-60 md:h-72 object-cover" height="300" src="img/banner.jpg" width="1200"/>
+   <div class="absolute inset-0 bg-gradient-to-r  flex flex-col justify-center items-center text-white px-4">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-lg">
+     Welcome to Poems For You ♡
+    </h1><br>
+    <p class="mt-2 text-lg sm:text-xl md:text-2xl font-light drop-shadow-md max-w-3xl text-center">
+     Written with all my heart, just for you.
+    </p>
+   </div>
+  </div>
+  <div class="container max-w-7xl w-full">
+   <!-- Header -->
+   <div class="text-center mb-5">
+    <p class="intro-text text-muted fs-5 text-lg sm:text-xl text-gray-700 select-none">
+      ♡ .˚⊹ Please hover over the images to see the poems, thankchu! ⊹˚. ♡
+    </p>
+   </div>
+   <div class="max-w-7xl w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div aria-label="Card about Lovxegen" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="img1" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" height="400" src="img/p1.jpg" width="600"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line" id="desc-1">
+       You are my oxygen, pure and true,
+I cannot breathe apart from you.
+A day without "I love you" said,
+Leaves aching thoughts within my head.
+
+No matter what, I won’t let go,
+Beside you, through all highs and lows.
+It’s not just words or vows we make,
+It’s life itself, for love’s own sake.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      Lovxegen
+     </h3>
+    </div>
+    <div aria-label="Card about 12th of July" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="rainnn" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" height="400" src="img/p2.png" width="600"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line" id="desc-2">
+       It rained the day you spoke your heart,
+Outside the school, the skies grew dark.
+We stood beneath the rooftop’s edge,
+No thunder loud, just whispered pledge.
+
+You looked at me with trembling eyes,
+And told me love without disguise.
+The moment paused, yet skies still gray,
+My world turned bright that rainy day.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      12th of July
+     </h3>
+    </div>
+    <div aria-label="Card about How to Raise a Heart" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="loveeee" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" height="400" src="img/p3.jpg" width="600"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line" id="desc-3">
+       This silly heart, now not just mine,
+It beats for you in steady line.
+So let it rest within your hands,
+Where love obeys no time’s demands.
+
+Let it be yours, through joy or scars,
+Let it be yours, beneath the stars.
+No need for riches, rings, or art;
+Just take and keep this loyal heart.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      How to Raise a Heart
+     </h3>
+    </div>
+    <div aria-label="Card about The Future of Us" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="heartttt" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" height="400" src="img/p4.jpg" width="600"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line" id="desc-4">
+       In every dream I hold inside,
+You’re there, right always by my side.
+Of all the things I wish come true,
+The strongest one is me and you.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      The Future of Us
+     </h3>
+    </div>
+    <div aria-label="Card about My Heart of Yours" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="hearto" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" height="400" src="img/p5.jpg" width="600"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line" id="desc-5">
+       Longing for your heart,
+True to my soul.
+Yearning for your love,
+Waiting for you to come home.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      My Heart of Yours
+     </h3>
+    </div>
+    <div aria-label="Card about My Star" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="i lovee youuu" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" height="400" src="img/p6.jpg" width="600"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line" id="desc-6">
+       Stars upon the sky,
+Couldn't shine more than your eyes
+Little did you know,
+How much power you hold,
+In this silly heart of mine,
+Drawn to your soul divine
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      My Star
+     </h3>
+    </div>
+    <!-- YOU -->
+    <div aria-label="Card about YOU" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="youuu are amazinggg :3" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" src="img/p7.png"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line">
+       Proud of the person you are today,
+You’ve come so far in your own way.
+Grateful that I had met the person you were yesterdays,
+Forever will be admiring the person you will become one day.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      About YOU
+     </h3>
+    </div>
+    <!-- You Complete Me -->
+    <div aria-label="Card about You Complete Me" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="youuu are the coooolest" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" src="img/p8.jpg"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line">
+       You complete me like a puzzle piece,
+Filling my heart with love and peace.
+You are the window, my guiding light,
+Turning my darkness into bright.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      You Complete Me
+     </h3>
+    </div>
+    <!-- Everything Reminds Me of You -->
+    <div aria-label="Card about Everything Reminds Me of You" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="youuuuu" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" src="img/p9.jpg"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line">
+       The sky above so vast and true,
+Its endless blue reminds me of you.
+So does the yellow of morning sun,
+All the romantic things we’ve yet begun.
+Songs and poems, sweet love notes too,
+They all, somehow, bring me to you.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      Everything Reminds Me of You
+     </h3>
+    </div>
+    <!-- Lucky to Love You -->
+    <div aria-label="Card about Lucky to Love You" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="mwaaaaah" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" src="img/p10.jpg"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line">
+       To meet you once, a stroke of fate,
+To know you more, a twist so great.
+To be loved by you, a dream come true,
+I thank the stars for someone like you.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      Lucky to Love You
+     </h3>
+    </div>
+    <!-- The Details I Adore -->
+    <div aria-label="Card about The Details I Adore" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="youuuu areee awesomeee" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" src="img/p11.jpg"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line">
+       Your lovely smile, your gorgeous eyes,
+Your voice, an angel in disguise.
+Each word you speak, each little tone,
+Plays softly in my heart alone.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      The Details I Adore
+     </h3>
+    </div>
+    <!-- A Part of Me -->
+    <div aria-label="Card about A Part of Me" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="part of meeeee" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" src="img/p12.jpg"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line">
+       You have become a part of me,
+Like roots that grow beneath a tree.
+You are in my blood, my breath, my air;
+Without you, love, I wouldn’t dare.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      A Part of Me
+     </h3>
+    </div>
+    <!-- My Number One -->
+    <div aria-label="Card about My Number One" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="i woof you" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" src="img/p13.jpg"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line">
+       As deep as love inside me grows,
+One truth is something my heart knows:
+As long as life on earth is spun,
+You’ll always be my number one.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      My Number One
+     </h3>
+    </div>
+    <!-- Dream by the Sea -->
+    <div aria-label="Card about Dream by the Sea" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="i am batman" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" src="img/p14.jpg"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line">
+       The sky reflects your heart so wide,
+Clouds your warmth I hold with pride.
+A sunset whispers in soft hue,
+Of one sweet day, just me and you.
+We will walk the shore, no need to flee,
+And never say goodbye to “we.”
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      Dream by the Sea
+     </h3>
+    </div>
+    <!-- My Everything -->
+    <div aria-label="Card about My Everything" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="my everythinggg" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" src="img/p15.png"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line">
+       You’re my jackpot, prize divine,
+My world, my stars, my richest sign.
+Each day with you, a gift I keep,
+A heaven here, both wide and deep.
+My favorite memories, tried and true,
+Are those I have made with only you.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      My Everything
+     </h3>
+    </div>
+    <!-- Real Magic -->
+    <div aria-label="Card about Real Magic" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="real-magic" src="img/p16.jpg"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line">
+       It’s not a trick, it’s not pretend,  
+It’s real, this love that will not end.  
+You feel it in your soul, your chest,  
+It’s true, it’s love and it’s the best.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      Real Magic
+     </h3>
+    </div>
+    <!-- Every Second, Every Beat -->
+    <div aria-label="Card about Every Second, Every Beat" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="meowmeow" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" src="img/p17.jpg"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line">
+       Each beat within your chest I hear,  
+Says “I love you” when you’re near.  
+Your kindest words, your thoughtful gaze,  
+They light me up in countless ways.  
+When I see you, I feel so safe,  
+Like every fear’s erased by grace.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      Every Second, Every Beat
+     </h3>
+    </div>
+    <!-- From Stranger to Soulmate -->
+    <div aria-label="Card about From Stranger to Soulmate" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="meowww" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" src="img/p18.jpg"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line">
+       You were a stranger in the crowd,  
+Now you're the one who makes me proud.  
+You became my best friend,  
+The one I’ll love until the end.  
+Now you’re the one I miss so deep,  
+The one I’m scared I’ll never keep.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      From Stranger to Soulmate
+     </h3>
+    </div>
+    <!-- Pizza on a Plate -->
+    <div aria-label="Card about Pizza on a Plate" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="pizzza" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" src="img/p19.jpg"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line">
+       You’re like pizza, perfect and warm.  
+You're always on my mind, you see,  
+Like pizza resting peacefully on me.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      Pizza on a Plate
+     </h3>
+    </div>
+    <!-- Painting My Life -->
+    <div aria-label="Card about Painting My Life" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="painting" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" src="img/p20.jpg"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line">
+       Before I met you, life was plain,  
+A canvas stretched but lacked domain.  
+Then came your touch, your colors bright,  
+And turned my world into pure light.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      Painting My Life
+     </h3>
+    </div>
+    <!-- The Saddest Part -->
+    <div aria-label="Card about The Saddest Part" class="relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group" role="button" tabindex="0">
+     <img alt="wooo" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" src="img/p21.jpg"/>
+     <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-6 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500 overflow-y-auto" style="max-height: 16rem;">
+      <p class="text-center text-sm leading-relaxed whitespace-pre-line">
+       The hardest part of every day  
+Is watching you just walk away.  
+I count the time ‘til you return,  
+While all my silent longings burn.
+      </p>
+     </div>
+     <h3 class="p-4 text-xl font-semibold text-gray-900 bg-white border-t border-gray-200 select-none">
+      The Saddest Part
+     </h3>
+    </div>
+   </div>
+  </div>
+ <script>
+  // Poem card functionality
+  const cards = document.querySelectorAll(
+    ".relative.bg-white.rounded-lg.shadow-lg.overflow-hidden.cursor-pointer.group"
+  );
+
+  cards.forEach((card) => {
+    const img = card.querySelector("img");
+    const descDiv = card.querySelector("div.absolute");
+    const title = card.querySelector("h3");
+
+    let showingDesc = false;
+
+    function toggleDescription() {
+      if (!showingDesc) {
+        // Show description
+        descDiv.style.opacity = "1";
+        descDiv.style.pointerEvents = "auto";
+        img.style.transform = "scale(1.05)";
+        img.style.filter = "brightness(0.5)";
+        showingDesc = true;
+      } else {
+        // Hide description
+        descDiv.style.opacity = "0";
+        descDiv.style.pointerEvents = "none";
+        img.style.transform = "";
+        img.style.filter = "";
+        showingDesc = false;
+      }
+    }
+
+    card.addEventListener("click", toggleDescription);
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleDescription();
+      }
+    });
+  });
+
+  // Movable home button functionality
+  const homeBtn = document.getElementById('movableHomeBtn');
+  let isDragging = false;
+  let offsetX, offsetY;
+
+  // Set initial position (bottom-left)
+  homeBtn.style.left = '16px';
+  homeBtn.style.bottom = '16px';
+
+  // Mouse events
+  homeBtn.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    const rect = homeBtn.getBoundingClientRect();
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+    homeBtn.style.transition = 'none';
+    homeBtn.style.cursor = 'grabbing';
+    e.preventDefault();
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    
+    let x = e.clientX - offsetX;
+    let y = e.clientY - offsetY;
+
+    // Constrain to viewport
+    const btnRect = homeBtn.getBoundingClientRect();
+    const maxX = window.innerWidth - btnRect.width;
+    const maxY = window.innerHeight - btnRect.height;
+
+    x = Math.max(0, Math.min(x, maxX));
+    y = Math.max(0, Math.min(y, maxY));
+
+    homeBtn.style.left = x + 'px';
+    homeBtn.style.top = y + 'px';
+    homeBtn.style.bottom = 'auto';
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (isDragging) {
+      isDragging = false;
+      homeBtn.style.transition = 'all 0.3s ease';
+      homeBtn.style.cursor = 'grab';
+    }
+  });
+
+  // Touch events for mobile
+  homeBtn.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    const touch = e.touches[0];
+    const rect = homeBtn.getBoundingClientRect();
+    offsetX = touch.clientX - rect.left;
+    offsetY = touch.clientY - rect.top;
+    homeBtn.style.transition = 'none';
+    homeBtn.style.cursor = 'grabbing';
+    e.preventDefault();
+  }, { passive: false });
+
+  window.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const touch = e.touches[0];
+    
+    let x = touch.clientX - offsetX;
+    let y = touch.clientY - offsetY;
+
+    // Constrain to viewport
+    const btnRect = homeBtn.getBoundingClientRect();
+    const maxX = window.innerWidth - btnRect.width;
+    const maxY = window.innerHeight - btnRect.height;
+
+    x = Math.max(0, Math.min(x, maxX));
+    y = Math.max(0, Math.min(y, maxY));
+
+    homeBtn.style.left = x + 'px';
+    homeBtn.style.top = y + 'px';
+    homeBtn.style.bottom = 'auto';
+
+    e.preventDefault();
+  }, { passive: false });
+
+  window.addEventListener('touchend', () => {
+    if (isDragging) {
+      isDragging = false;
+      homeBtn.style.transition = 'all 0.3s ease';
+      homeBtn.style.cursor = 'grab';
+    }
+  });
+
+  // Click handler - only navigate if not dragging
+  homeBtn.addEventListener('click', (e) => {
+    if (!isDragging) {
+      window.location.href = 'index.html';
+    }
+  });
+
+  // Reset position on window resize
+  window.addEventListener('resize', () => {
+    if (!isDragging) {
+      const btnRect = homeBtn.getBoundingClientRect();
+      const maxX = window.innerWidth - btnRect.width;
+      const currentX = parseInt(homeBtn.style.left) || 16;
+      
+      homeBtn.style.left = Math.min(currentX, maxX) + 'px';
+      homeBtn.style.bottom = '16px';
+      homeBtn.style.top = 'auto';
+    }
+  });
+</script>
+ </body>
+</html>

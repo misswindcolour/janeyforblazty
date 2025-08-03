@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Letters For You</title>
+  <link href="img/cat1.png" rel="icon" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+   body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(186deg,  #2F1E57 0%, #9B3662 100%);
+      padding: 4rem 1rem 1rem 1rem;
+      min-height: 100vh;
+    }
+    h1, h2 {
+      font-family: 'Poppins', sans-serif;
+    }
+    .intro-text {
+      max-width: 650px;
+      margin: 0 auto 2rem;
+      text-align: center;
+    }
+    .absolute.inset-0.bg-black {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    .group:hover .absolute.inset-0.bg-black {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+    .text-center.mb-5 {
+      line-height: 1.9;
+    }
+
+    /* Prevent text selection while dragging */
+    .noselect {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Button cursor states */
+    #movableHomeBtn {
+      cursor: grab;
+      transition: all 0.3s ease;
+    }
+    #movableHomeBtn:active {
+      cursor: grabbing;
+    }
+    
+    /* Envelopes grid - MOBILE FIRST APPROACH */
+    .envelopes-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    /* Tablet view - 2 columns */
+    @media (min-width: 768px) {
+        .envelopes-container {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+    }
+
+    /* Desktop view - 3 columns */
+    @media (min-width: 1024px) {
+        .envelopes-container {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+        }
+    }
+
+    /* Individual envelope */
+    .envelope-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .envelope-title {
+        margin-top: 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: white;
+        text-align: center;
+        padding: 0 0.5rem;
+        width: 100%;
+    }
+
+    .letter-image {
+        position: relative;
+        width: 100%;
+        max-width: 250px;
+        height: 200px;
+        cursor: pointer;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .letter-image {
+            height: 250px;
+        }
+    }
+
+    .animated-mail {
+        position: absolute;
+        height: 150px;
+        width: 100%;
+        max-width: 200px;
+        transition: 0.4s;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    @media (min-width: 768px) {
+        .animated-mail {
+            height: 187px;
+            max-width: 250px;
+        }
+    }
+
+    /* Pastel color variations for envelopes */
+
+    .envelope-1 .body { border-color: transparent transparent #E67390 transparent; }
+    .envelope-1 .top-fold { border-color: #ED9BB0 transparent transparent transparent; }
+    .envelope-1 .back-fold { background: #ED9BB0; }
+    .envelope-1 .left-fold { border-color: transparent transparent transparent #F4C2CF; }
+
+
+    .envelope-2 .body { border-color: transparent transparent #ED72AE transparent; }
+    .envelope-2 .top-fold { border-color: #FF8AC2 transparent transparent transparent; }
+    .envelope-2 .back-fold { background: #FF8AC2; }
+    .envelope-2 .left-fold { border-color: transparent transparent transparent #FFB8DA; }
+
+    .envelope-3 .body { border-color: transparent transparent #4DD1E0 transparent; }
+    .envelope-3 .top-fold { border-color: #9BE5ED transparent transparent transparent; }
+    .envelope-3 .back-fold { background: #9BE5ED; }
+    .envelope-3 .left-fold { border-color: transparent transparent transparent #C2EFF4; }
+
+
+    .envelope-4 .body { border-color: transparent transparent #ED715C transparent; }
+    .envelope-4 .top-fold { border-color: #F55033 transparent transparent transparent; }
+    .envelope-4 .back-fold { background: #F55033; }
+    .envelope-4 .left-fold { border-color: transparent transparent transparent #FF9685; }
+
+
+    .envelope-5 .body { border-color: transparent transparent #D6AF00 transparent; }
+    .envelope-5 .top-fold { border-color: #FFDF47 transparent transparent transparent; }
+    .envelope-5 .back-fold { background: #FFDF47; }
+    .envelope-5 .left-fold { border-color: transparent transparent transparent #FFEC8F; }
+
+
+    .envelope-6 .body { border-color: transparent transparent #d9a06c transparent; }
+    .envelope-6 .top-fold { border-color: #e6b78f transparent transparent transparent; }
+    .envelope-6 .back-fold { background: #e6b78f; }
+    .envelope-6 .left-fold { border-color: transparent transparent transparent #FFCE9F ; }
+
+
+    /* Repeating colors for remaining envelopes */
+    .envelope-9 .body { border-color: transparent transparent #a6cf7a transparent; }
+    .envelope-9 .top-fold { border-color: #b8d994 transparent transparent transparent; }
+    .envelope-9 .back-fold { background: #b8d994; }
+    .envelope-9 .left-fold { border-color: transparent transparent transparent #CFECA6; }
+
+
+    .envelope-11 .body { border-color: transparent transparent #C77D04 transparent; }
+    .envelope-11 .top-fold { border-color: #FF9D24 transparent transparent transparent; }
+    .envelope-11 .back-fold { background: #FF9D24; }
+    .envelope-11 .left-fold { border-color: transparent transparent transparent #FFC973; }
+
+
+    .envelope-7 .body { border-color: transparent transparent #4ab9ad transparent; }
+    .envelope-7 .top-fold { border-color: #5ccfc3 transparent transparent transparent; }
+    .envelope-7 .back-fold { background: #5ccfc3; }
+    .envelope-7 .left-fold { border-color: transparent transparent transparent #66E4D8; }
+
+    .envelope-12 .body { border-color: transparent transparent #86c5d0 transparent; }
+    .envelope-12 .top-fold { border-color: #9fd8e0 transparent transparent transparent; }
+    .envelope-12 .back-fold { background: #9fd8e0; }
+    .envelope-12 .left-fold { border-color: transparent transparent transparent #B2EBF2; }
+
+    .envelope-8 .body { border-color: transparent transparent #e8c8c8 transparent; }
+    .envelope-8 .top-fold { border-color: #f2dada transparent transparent transparent; }
+    .envelope-8 .back-fold { background: #f2dada; }
+    .envelope-8 .left-fold { border-color: transparent transparent transparent #FCECEC; }
+
+    .envelope-10 .body { border-color: transparent transparent #bea8cc transparent; }
+    .envelope-10 .top-fold { border-color: #d0c0da transparent transparent transparent; }
+    .envelope-10 .back-fold { background: #d0c0da; }
+    .envelope-10 .left-fold { border-color: transparent transparent transparent #E2D3EB; }
+
+    .animated-mail .body {
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 100px 200px;
+        z-index: 2;
+    }
+
+    @media (min-width: 768px) {
+        .animated-mail .body {
+            border-width: 0 0 125px 250px;
+        }
+    }
+
+    .animated-mail .top-fold {
+        position: absolute;
+        top: 50px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 50px 100px 0 100px;
+        transform-origin: 50% 0%;
+        transition: transform 0.4s 0.4s, z-index 0.2s 0.4s;
+        z-index: 2;
+    }
+
+    @media (min-width: 768px) {
+        .animated-mail .top-fold {
+            top: 62px;
+            border-width: 62px 125px 0 125px;
+        }
+    }
+
+    .animated-mail .back-fold {
+        position: absolute;
+        bottom: 0;
+        width: 200px;
+        height: 100px;
+        z-index: 0;
+    }
+
+    @media (min-width: 768px) {
+        .animated-mail .back-fold {
+            width: 250px;
+            height: 125px;
+        }
+    }
+
+    .animated-mail .left-fold {
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 50px 0 50px 100px;
+        z-index: 2;
+    }
+
+    @media (min-width: 768px) {
+        .animated-mail .left-fold {
+            border-width: 62px 0 62px 125px;
+        }
+    }
+
+    .animated-mail .letter {
+        left: 20px;
+        bottom: 0px;
+        position: absolute;
+        width: 160px;
+        height: 60px;
+        background: white;
+        z-index: 1;
+        overflow: hidden;
+        transition: 0.4s 0.2s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    @media (min-width: 768px) {
+        .animated-mail .letter {
+            left: 25px;
+            width: 200px;
+            height: 75px;
+        }
+    }
+
+    .animated-mail .letter img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+    }
+
+    .shadow {
+        position: absolute;
+        top: 200px;
+        left: 50%;
+        width: 400px;
+        height: 30px;
+        transition: 0.4s;
+        transform: translateX(-50%);
+        border-radius: 100%;
+        background: radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+    }
+
+    @media (min-width: 768px) {
+        .shadow {
+            top: 250px;
+            width: 500px;
+            height: 40px;
+        }
+    }
+
+    /* Open state */
+    .letter-image.open .animated-mail {
+        transform: translate(-50%, 50px);
+    }
+
+    @media (min-width: 768px) {
+        .letter-image.open .animated-mail {
+            transform: translate(-50%, 62px);
+        }
+    }
+
+    .letter-image.open .animated-mail .top-fold {
+        transition: transform 0.4s, z-index 0.2s;
+        transform: rotateX(180deg);
+        z-index: 0;
+    }
+
+    .letter-image.open .animated-mail .letter {
+        height: 180px;
+    }
+
+    @media (min-width: 768px) {
+        .letter-image.open .animated-mail .letter {
+            height: 225px;
+        }
+    }
+
+    .letter-image.open .animated-mail .letter img {
+        display: block;
+    }
+
+    .letter-image.open .shadow {
+        width: 240px;
+    }
+
+    @media (min-width: 768px) {
+        .letter-image.open .shadow {
+            width: 300px;
+        }
+    }
+
+    /* Popup styles */
+    .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .popup-overlay.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .popup-content {
+        max-width: 95%;
+        max-height: 95%;
+        text-align: center;
+        position: relative;
+    }
+
+    .popup-content img {
+        max-width: 100%;
+        max-height: 80vh;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #e95f55;
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        z-index: 101;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.2s ease;
+    }
+
+    @media (min-width: 768px) {
+        .close-btn {
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+        }
+    }
+
+    .close-btn:hover {
+        background: #d63031;
+        transform: scale(1.1);
+    }
+
+    /* Banner styles */
+    .banner-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto 2rem;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        position: relative;
+        height: 180px;
+    }
+
+    @media (min-width: 640px) {
+        .banner-container {
+            height: 240px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .banner-container {
+            height: 300px;
+            margin-bottom: 3rem;
+        }
+    }
+
+    .banner-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .banner-text {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 1rem;
+        color: white;
+    }
+
+    .banner-text h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    }
+
+    .banner-text p {
+        font-size: 1rem;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        max-width: 90%;
+    }
+
+    @media (min-width: 640px) {
+        .banner-text h1 {
+            font-size: 2rem;
+        }
+        .banner-text p {
+            font-size: 1.25rem;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .banner-text h1 {
+            font-size: 2.5rem;
+        }
+        .banner-text p {
+            font-size: 1.5rem;
+            max-width: 80%;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .banner-text h1 {
+            font-size: 3rem;
+        }
+    }
+  </style>
+ </head>
+ <body class="min-h-screen flex flex-col items-center justify-start p-4">
+  <button
+  id="movableHomeBtn"
+  aria-label="Home page button"
+  class="noselect fixed bottom-4 left-4 z-50 flex items-center justify-center w-14 h-14 rounded-full text-white shadow-lg hover:bg-blue-900 focus:outline-none focus:ring-4 focus:ring-blue-300 cursor-default"
+  type="button"
+  style="background-color: #101D42;"
+>
+  <i class="fas fa-home fa-lg"></i>
+</button>
+
+  <div class="banner-container">
+   <img alt="banner" src="img/banner3.jpg"/>
+   <div class="banner-text">
+    <h1>Letters For You To Read ♡</h1>
+    <p>Click the envelopes to see what's inside :3</p>
+   </div>
+  </div>
+
+    <div class="envelopes-container">
+        <div class="envelope-wrapper">
+            <div class="letter-image" id="envelope1">
+                <div class="animated-mail envelope-1">
+                    <div class="back-fold"></div>
+                    <div class="letter">
+                        <img src="img/l1.png" alt="Envelope Content 1">
+                    </div>
+                    <div class="top-fold"></div>
+                    <div class="body"></div>
+                    <div class="left-fold"></div>
+                </div>
+            </div>
+            <div class="envelope-title">Reminder of How Amazing You Are</div>
+        </div>
+
+        <div class="envelope-wrapper">
+            <div class="letter-image" id="envelope2">
+                <div class="animated-mail envelope-2">
+                    <div class="back-fold"></div>
+                    <div class="letter">
+                        <img src="img/l2.png" alt="Envelope Content 2">
+                    </div>
+                    <div class="top-fold"></div>
+                    <div class="body"></div>
+                    <div class="left-fold"></div>
+                </div>
+            </div>
+            <div class="envelope-title">Reasons Why I Love You</div>
+        </div>
+
+        <div class="envelope-wrapper">
+            <div class="letter-image" id="envelope3">
+                <div class="animated-mail envelope-3">
+                    <div class="back-fold"></div>
+                    <div class="letter">
+                        <img src="img/l3.png" alt="Envelope Content 3">
+                    </div>
+                    <div class="top-fold"></div>
+                    <div class="body"></div>
+                    <div class="left-fold"></div>
+                </div>
+            </div>
+            <div class="envelope-title">When You Are About to Go Abroad</div>
+        </div>
+
+        <div class="envelope-wrapper">
+            <div class="letter-image" id="envelope4">
+                <div class="animated-mail envelope-4">
+                    <div class="back-fold"></div>
+                    <div class="letter">
+                        <img src="img/l4.png" alt="Envelope Content 4">
+                    </div>
+                    <div class="top-fold"></div>
+                    <div class="body"></div>
+                    <div class="left-fold"></div>
+                </div>
+            </div>
+            <div class="envelope-title">When You Have Accomplished Something</div>
+        </div>
+
+        <div class="envelope-wrapper">
+            <div class="letter-image" id="envelope5">
+                <div class="animated-mail envelope-5">
+                    <div class="back-fold"></div>
+                    <div class="letter">
+                        <img src="img/l5.png" alt="Envelope Content 5">
+                    </div>
+                    <div class="top-fold"></div>
+                    <div class="body"></div>
+                    <div class="left-fold"></div>
+                </div>
+            </div>
+            <div class="envelope-title">When You Are Happy</div>
+        </div>
+
+        <div class="envelope-wrapper">
+            <div class="letter-image" id="envelope6">
+                <div class="animated-mail envelope-6">
+                    <div class="back-fold"></div>
+                    <div class="letter">
+                        <img src="img/l6.png" alt="Envelope Content 6">
+                    </div>
+                    <div class="top-fold"></div>
+                    <div class="body"></div>
+                    <div class="left-fold"></div>
+                </div>
+            </div>
+            <div class="envelope-title">When You Are Feeling Like Giving Up</div>
+        </div>
+
+        <div class="envelope-wrapper">
+            <div class="letter-image" id="envelope7">
+                <div class="animated-mail envelope-7">
+                    <div class="back-fold"></div>
+                    <div class="letter">
+                        <img src="img/l7.png" alt="Envelope Content 7">
+                    </div>
+                    <div class="top-fold"></div>
+                    <div class="body"></div>
+                    <div class="left-fold"></div>
+                </div>
+            </div>
+            <div class="envelope-title">When You Can't Sleep</div>
+        </div>
+
+        <div class="envelope-wrapper">
+            <div class="letter-image" id="envelope8">
+                <div class="animated-mail envelope-8">
+                    <div class="back-fold"></div>
+                    <div class="letter">
+                        <img src="img/l8.png" alt="Envelope Content 8">
+                    </div>
+                    <div class="top-fold"></div>
+                    <div class="body"></div>
+                    <div class="left-fold"></div>
+                </div>
+            </div>
+            <div class="envelope-title">When You Overthink or Upset</div>
+        </div>
+
+        <div class="envelope-wrapper">
+            <div class="letter-image" id="envelope9">
+                <div class="animated-mail envelope-9">
+                    <div class="back-fold"></div>
+                    <div class="letter">
+                        <img src="img/l9.png" alt="Envelope Content 9">
+                    </div>
+                    <div class="top-fold"></div>
+                    <div class="body"></div>
+                    <div class="left-fold"></div>
+                </div>
+            </div>
+            <div class="envelope-title">When You Are Sick </div>
+        </div>
+
+        <div class="envelope-wrapper">
+            <div class="letter-image" id="envelope10">
+                <div class="animated-mail envelope-10">
+                    <div class="back-fold"></div>
+                    <div class="letter">
+                        <img src="img/l10.png" alt="Envelope Content 10">
+                    </div>
+                    <div class="top-fold"></div>
+                    <div class="body"></div>
+                    <div class="left-fold"></div>
+                </div>
+            </div>
+            <div class="envelope-title">A Message from My Heart</div>
+        </div>
+
+        <div class="envelope-wrapper">
+            <div class="letter-image" id="envelope11">
+                <div class="animated-mail envelope-11">
+                    <div class="back-fold"></div>
+                    <div class="letter">
+                        <img src="img/best.png" alt="Envelope Content 11">
+                    </div>
+                    <div class="top-fold"></div>
+                    <div class="body"></div>
+                    <div class="left-fold"></div>
+                </div>
+            </div>
+            <div class="envelope-title">Best Person Award</div>
+        </div>
+
+<div class="envelope-wrapper">
+    <div class="letter-image" id="envelope12">
+        <div class="animated-mail envelope-12">
+            <div class="back-fold"></div>
+            <div class="letter" data-link="https://youtu.be/dQw4w9WgXcQ?si=XQxXXM_OVyDXRl65">
+                <img src="img/heart.png" alt="Bonus Content">
+            </div>
+            <div class="top-fold"></div>
+            <div class="body"></div>
+            <div class="left-fold"></div>
+        </div>
+    </div>
+    <div class="envelope-title">Bonus ;)</div>
+</div>
+
+    </div>
+
+    <div class="popup-overlay" id="popup">
+        <button class="close-btn" id="closeBtn">×</button>
+        <div class="popup-content">
+            <img id="popupImage" src="" alt="Full Image">
+        </div>
+    </div>
+
+
+<script>
+  // Poem card functionality
+  const cards = document.querySelectorAll(
+    ".relative.bg-white.rounded-lg.shadow-lg.overflow-hidden.cursor-pointer.group"
+  );
+
+  cards.forEach((card) => {
+    const img = card.querySelector("img");
+    const descDiv = card.querySelector("div.absolute");
+    const title = card.querySelector("h3");
+
+    let showingDesc = false;
+
+    function toggleDescription() {
+      if (!showingDesc) {
+        // Show description
+        descDiv.style.opacity = "1";
+        descDiv.style.pointerEvents = "auto";
+        img.style.transform = "scale(1.05)";
+        img.style.filter = "brightness(0.5)";
+        showingDesc = true;
+      } else {
+        // Hide description
+        descDiv.style.opacity = "0";
+        descDiv.style.pointerEvents = "none";
+        img.style.transform = "";
+        img.style.filter = "";
+        showingDesc = false;
+      }
+    }
+
+    card.addEventListener("click", toggleDescription);
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleDescription();
+      }
+    });
+  });
+
+  // Movable home button functionality
+  const homeBtn = document.getElementById('movableHomeBtn');
+  let isDragging = false;
+  let offsetX, offsetY;
+
+  // Set initial position (bottom-left)
+  homeBtn.style.left = '16px';
+  homeBtn.style.bottom = '16px';
+
+  // Mouse events
+  homeBtn.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    const rect = homeBtn.getBoundingClientRect();
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+    homeBtn.style.transition = 'none';
+    homeBtn.style.cursor = 'grabbing';
+    e.preventDefault();
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    
+    let x = e.clientX - offsetX;
+    let y = e.clientY - offsetY;
+
+    // Constrain to viewport
+    const btnRect = homeBtn.getBoundingClientRect();
+    const maxX = window.innerWidth - btnRect.width;
+    const maxY = window.innerHeight - btnRect.height;
+
+    x = Math.max(0, Math.min(x, maxX));
+    y = Math.max(0, Math.min(y, maxY));
+
+    homeBtn.style.left = x + 'px';
+    homeBtn.style.top = y + 'px';
+    homeBtn.style.bottom = 'auto';
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (isDragging) {
+      isDragging = false;
+      homeBtn.style.transition = 'all 0.3s ease';
+      homeBtn.style.cursor = 'grab';
+    }
+  });
+
+  // Touch events for mobile
+  homeBtn.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    const touch = e.touches[0];
+    const rect = homeBtn.getBoundingClientRect();
+    offsetX = touch.clientX - rect.left;
+    offsetY = touch.clientY - rect.top;
+    homeBtn.style.transition = 'none';
+    homeBtn.style.cursor = 'grabbing';
+    e.preventDefault();
+  }, { passive: false });
+
+  window.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const touch = e.touches[0];
+    
+    let x = touch.clientX - offsetX;
+    let y = touch.clientY - offsetY;
+
+    // Constrain to viewport
+    const btnRect = homeBtn.getBoundingClientRect();
+    const maxX = window.innerWidth - btnRect.width;
+    const maxY = window.innerHeight - btnRect.height;
+
+    x = Math.max(0, Math.min(x, maxX));
+    y = Math.max(0, Math.min(y, maxY));
+
+    homeBtn.style.left = x + 'px';
+    homeBtn.style.top = y + 'px';
+    homeBtn.style.bottom = 'auto';
+
+    e.preventDefault();
+  }, { passive: false });
+
+  window.addEventListener('touchend', () => {
+    if (isDragging) {
+      isDragging = false;
+      homeBtn.style.transition = 'all 0.3s ease';
+      homeBtn.style.cursor = 'grab';
+    }
+  });
+
+  // Click handler - only navigate if not dragging
+  homeBtn.addEventListener('click', (e) => {
+    if (!isDragging) {
+      window.location.href = 'index.html';
+    }
+  });
+
+  // Reset position on window resize
+  window.addEventListener('resize', () => {
+    if (!isDragging) {
+      const btnRect = homeBtn.getBoundingClientRect();
+      const maxX = window.innerWidth - btnRect.width;
+      const currentX = parseInt(homeBtn.style.left) || 16;
+      
+      homeBtn.style.left = Math.min(currentX, maxX) + 'px';
+      homeBtn.style.bottom = '16px';
+      homeBtn.style.top = 'auto';
+    }
+  });
+
+  // Initialize all envelopes
+  document.addEventListener('DOMContentLoaded', function() {
+      for (let i = 1; i <= 12; i++) {
+          const envelope = document.getElementById(`envelope${i}`);
+          if (envelope) {
+              const letter = envelope.querySelector('.letter');
+              const letterImg = envelope.querySelector('.letter img');
+              const redirectLink = letter ? letter.getAttribute('data-link') : null;
+              
+              envelope.addEventListener('click', function(e) {
+                  // Special handling for envelope12 with link
+                  if (i === 12 && redirectLink) {
+                      // Check if clicked on the letter/image area
+                      const clickedOnLetter = e.target.closest('.letter') || 
+                                           e.target.closest('.letter img') || 
+                                           e.target.closest('.animated-mail');
+                      if (clickedOnLetter) {
+                          window.open(redirectLink, '_blank');
+                          return; // Stop further execution
+                      }
+                  }
+                  
+                  // Original behavior for other envelopes
+                  // Close any open envelopes first
+                  document.querySelectorAll('.letter-image.open').forEach(openEnv => {
+                      if (openEnv !== this) {
+                          openEnv.classList.remove('open');
+                      }
+                  });
+                  
+                  this.classList.toggle('open');
+                  
+                  if (this.classList.contains('open')) {
+                      // Set popup image source
+                      document.getElementById('popupImage').src = letterImg.src;
+                      
+                      // Show popup after animation
+                      setTimeout(() => {
+                          document.getElementById('popup').classList.add('active');
+                      }, 800);
+                  } else {
+                      document.getElementById('popup').classList.remove('active');
+                  }
+              });
+          }
+      }
+      
+      // Close popup
+      const closeBtn = document.getElementById('closeBtn');
+      if (closeBtn) {
+          closeBtn.addEventListener('click', function(e) {
+              e.stopPropagation();
+              document.getElementById('popup').classList.remove('active');
+              
+              // Close all envelopes
+              document.querySelectorAll('.letter-image.open').forEach(env => {
+                  env.classList.remove('open');
+              });
+          });
+      }
+      
+      // Close when clicking outside popup content
+      document.getElementById('popup').addEventListener('click', function(e) {
+          if (e.target === this) {
+              this.classList.remove('active');
+              document.querySelectorAll('.letter-image.open').forEach(env => {
+                  env.classList.remove('open');
+              });
+          }
+      });
+  });
+</script>
+
+
+</script>
+ </body>
+</html>

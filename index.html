@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>˚ʚ♡ɞ˚</title>
+  <link rel="icon" href="img/cat1.png" type="image/x-icon">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Fonts and base styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #A1F1FF 0%, #FFE0F3 50%, #f7d9d9 100%);
+      min-height: 100vh;
+      padding: 3rem 1rem;
+      color: #1a1a1a;
+      position: relative;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    hr {
+      border-color: white;
+      opacity: 1;
+    }
+
+    /* Overlay for popup */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    /* Envelope animation styles */
+    .envelope-wrapper {
+      height: 200px;
+      width: 300px;
+      background-color: #FF5993;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      z-index: 0;
+    }
+
+    .lid {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      border-right: 150px solid transparent;
+      border-bottom: 100px solid transparent;
+      border-left: 150px solid transparent;
+      transform-origin: top;
+      transition: transform 0.25s linear;
+    }
+
+    /* Lid when closed */
+    .lid.one {
+      border-top: 100px solid #FF8FB6;
+      transform: rotateX(0deg);
+      z-index: 3;
+      transition-delay: 0.75s;
+    }
+
+    /* Lid when opened */
+    .lid.two {
+      border-top: 100px solid #FF8FB6;
+      transform: rotateX(90deg);
+      z-index: 1;
+      transition-delay: 0.5s;
+    }
+
+    .envelope {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      border-top: 100px solid transparent;
+      border-right: 150px solid #FFCCDC;
+      border-bottom: 100px solid #FFCCDC;
+      border-left: 150px solid #FFB8D1;
+      z-index: 3;
+    }
+
+    .letter {
+      position: absolute;
+      top: 0;
+      width: 80%;
+      height: 80%;
+      background-color: white;
+      border-radius: 15px;
+      z-index: 2;
+      transition: 0.5s;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .letter p {
+      font-size: 16px;
+      color: #3B4049;
+      margin-bottom: 0;
+    }
+
+    .envelope-wrapper:hover .lid.one {
+      transform: rotateX(90deg);
+      transition-delay: 0s;
+    }
+
+    .envelope-wrapper:hover .lid.two {
+      transform: rotateX(180deg);
+      transition-delay: 0.25s;
+    }
+
+    .envelope-wrapper:hover .letter {
+      transform: translateY(-50px);
+      transition-delay: 0.5s;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    /* Header section styling */
+    .my-header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 1rem 4rem;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .header-cat-img {
+      max-width: 220px;
+      height: auto;
+      margin-bottom: 1.5rem;
+    }
+
+    .main-title {
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .subtitle-text {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #4a4a4a;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .caption-text {
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #666;
+      margin-bottom: 2rem;
+      line-height: 1.4;
+    }
+
+    /* Button container */
+    .button-container {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Styled white button */
+    .btn-explore, .btn-message {
+      font-size: 1.2rem;
+      padding: 0.8rem 3rem;
+      border-radius: 999px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+    }
+
+    .btn-explore {
+      background: #fff;
+      color: #111;
+    }
+
+    .btn-message {
+      background: #FFA6C7;
+      color: #111;
+      border: none;
+    }
+
+    .btn-explore:hover {
+      background-color: #FFA6C7;
+    }
+
+    .btn-message:hover {
+      background-color: #FF70A5;
+    }
+
+    /* Rest of your existing styles... */
+    /* Typography */
+    h1 {
+      font-weight: 700;
+      font-size: 2.8rem;
+      color: #111;
+      margin-bottom: 0.3rem;
+    }
+
+    h2 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #111;
+      margin-bottom: 2.5rem;
+    }
+
+    .subtitle {
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #444;
+      margin-bottom: 0.8rem;
+    }
+
+    .caption {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Project Cards */
+    .project-card {
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      background-color: #ffffff;
+      height: 100%;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .project-body {
+      padding: 1.25rem;
+      text-align: left;
+    }
+
+    .project-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #1a1a1a;
+    }
+
+    .project-text {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 1rem;
+    }
+
+    .project-link {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #6c4ff7;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive adjustments */
+    @media (min-width: 576px) {
+      h1 {
+        font-size: 3.2rem;
+      }
+
+      h2 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- The overlay and envelope popup -->
+  <div class="overlay" id="messageOverlay">
+    <span class="close-btn" id="closeBtn">&times;</span>
+    <div class="envelope-wrapper">
+      <div class="lid one"></div>
+      <div class="lid two"></div>
+      <div class="envelope"></div>
+      <div class="letter">
+        <p>HIII BABY, I HOPE YOU WILL LOVE THIS PROJECT! I LOVE YOU, ALWAYS AND FOREVER MY FUTURE HUBBY ♡</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- HEADER -->
+    <header class="my-header text-center">
+      <img src="img/cat1.png" alt="Cute Cat Couple" class="header-cat-img" />
+      <h1 class="main-title">HELLO LOVE ♡</h1>
+      <p class="subtitle-text">WELCOME TO THE MINI WORLD OF</p>
+      <p class="caption-text">Mr. and Mrs Ralalalashushu :3</p>
+      <div class="button-container">
+        <a href="#projects" class="btn btn-explore">Explore the Projects</a>
+        <button class="btn btn-message" id="messageBtn">Message for You</button>
+      </div>
+    </header>
+
+    <hr class="my-5" />
+    <!-- PROJECT SECTION -->
+    <section id="projects">
+      <h2>THESE ARE FOR YOU, MY DARLING ✧˖°</h2>
+      <div class="row g-4 justify-content-center">
+
+        <!-- CARD 1 -->
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="project-card">
+            <img src="img/date.png" alt="Virtual Dates" class="project-img" />
+            <div class="project-body">
+              <h3 class="project-title">Virtual Dates</h3>
+              <p class="project-text">A special place for us to go on many dream dates through online.</p>
+              <a href="https://www.canva.com/design/DAGSO-q4l6M/gQLl2UGfQHImg2BmDQTI2A/edit?utm_content=DAGSO-q4l6M&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square" style="color: #6c4ff7;"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="project-card">
+            <img src="img/poems.png" alt="Poems" class="project-img" />
+            <div class="project-body">
+              <h3 class="project-title">Poems About You</h3>
+              <p class="project-text">Poems I have written since the day I fell in love with you.</p>
+              <a href="poems.html" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square" style="color: #6c4ff7;"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="project-card">
+            <img src="img/read.png" alt="Read This" class="project-img" />
+            <div class="project-body">
+              <h3 class="project-title">Read This When</h3>
+              <p class="project-text">Letters I have written for you to read when... P.S. I meant every single one of them :></p>
+              <a href="read.html" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square" style="color: #6c4ff7;"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="project-card">
+            <img src="img/stories.png" alt="Stories" class="project-img" />
+            <div class="project-body">
+              <h3 class="project-title">Stories</h3>
+              <p class="project-text">Silly stories for you to read. Warning: they are very SILLY.</p>
+              <a href="stories.html" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square" style="color: #6c4ff7;"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="project-card">
+            <img src="img/draw.jpg" alt="Drawings" class="project-img" />
+            <div class="project-body">
+              <h3 class="project-title">Drawings/Paintings</h3>
+              <p class="project-text">All my art made with love just for you. I hope you will like them! ^_^</p>
+              <a href="art.html" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square" style="color: #6c4ff7;"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="project-card">
+            <img src="img/movie.png" alt="Songs" class="project-img" />
+            <div class="project-body">
+              <h3 class="project-title">Movies/Series Recommendations</h3>
+              <p class="project-text">Movies and TV shows recommendations to watch. Note: Sarcasm is heavily applied. </p>
+              <a href="https://www.canva.com/design/DAGoR5zCmlE/DW7FnHpKSfO6ZwXdda0HfA/edit?utm_content=DAGoR5zCmlE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square" style="color: #6c4ff7;"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Get the elements
+    const messageBtn = document.getElementById('messageBtn');
+    const messageOverlay = document.getElementById('messageOverlay');
+    const closeBtn = document.getElementById('closeBtn');
+
+    // Show the overlay when message button is clicked
+    messageBtn.addEventListener('click', () => {
+      messageOverlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // Prevent scrolling when overlay is open
+    });
+
+    // Hide the overlay when close button is clicked
+    closeBtn.addEventListener('click', () => {
+      messageOverlay.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Re-enable scrolling
+    });
+
+    // Hide the overlay when clicking outside the envelope
+    messageOverlay.addEventListener('click', (e) => {
+      if (e.target === messageOverlay) {
+        messageOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
+</body>
+</html>
